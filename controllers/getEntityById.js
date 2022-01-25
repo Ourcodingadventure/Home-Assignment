@@ -11,17 +11,23 @@ const getEntityById = (req, res) => {
     entity = "crane";
   }
   try {
-    con.query(query, function (err, result, fields) {
-      if (err && !result.length) throw err;
-      res.status(200).send({
-        message: `${Entity} got by id`,
-        result,
-      });
+    con.query(query, function (error, result, fields) {
+      if (error) throw error;
+      if (!result.length) {
+        res.status(404).send({
+          message: `unable to get ${entity} by id either it does not exist or is deleted`,
+        });
+      } else {
+        res.status(200).send({
+          message: `${entity} got by id`,
+          result,
+        });
+      }
     });
-  } catch (err) {
-    res.status(404).send({
-      message: `unable to get ${Entity} by id`,
-      err,
+  } catch (error) {
+    res.status(500).send({
+      message: `server error`,
+      error,
     });
   }
 };

@@ -1,6 +1,7 @@
 const con = require("../models");
 const createDevice = (req, res) => {
   try {
+    const { device_id, crane_id, serial_number, description } = req.body;
     const query = `select * from device where device_id = '${device_id}' and deleted = false`;
     const serialQuery = `select * from device where serial_number = '${serial_number}' and deleted = false`;
     const insertQuery = `INSERT INTO device (device_id, crane_id,serial_number, description, deleted) VALUES ('${device_id}','${crane_id}','${serial_number}','${description}',${req.body.deleted})`;

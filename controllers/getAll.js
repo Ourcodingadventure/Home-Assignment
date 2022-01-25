@@ -6,10 +6,10 @@ const getAll = (req, res) => {
     if (req.baseUrl.includes("/devices")) {
       query =
         "select device_id,serial_number,description,crane_id from device where deleted=false";
-      entity = "device";
+      entity = "device's";
     } else {
       query = "select crane_id,crane_name from crane where deleted=false";
-      entity = "crane";
+      entity = "crane's";
     }
 
     con.query(query, function (err, result, fields) {
@@ -21,7 +21,7 @@ const getAll = (req, res) => {
     });
   } catch (err) {
     res.status(404).send({
-      message: "unable to retrieve devices",
+      message: `unable to retrieve ${entity}`,
       err,
     });
   }
