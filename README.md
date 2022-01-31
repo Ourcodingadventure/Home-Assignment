@@ -14,6 +14,15 @@ Going into the in the /models/index.js you will find the connection to the datab
 
 Run the server with npm start or nodemon run if you have the package installed globally.
 
+congrats now its running if everything is running smooth you should see a few messages in the console
+{
+
+Connected!
+database created
+Table created
+Table created
+
+}
 Functionalities
 
 ---
