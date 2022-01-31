@@ -1,6 +1,5 @@
 express = require("express");
 const con = require("../models");
-
 const craneValidation = require("../middleware/craneValidation");
 const {
   getAll,
